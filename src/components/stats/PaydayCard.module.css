@@ -1,0 +1,68 @@
+.card {
+  background: var(--color-payday-light);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-payday);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-payday);
+}
+
+.date {
+  font-size: var(--font-size-sm);
+  color: var(--color-payday);
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.badge {
+  color: var(--color-payday);
+  opacity: 0.7;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-payday);
+  opacity: 0.15;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-payday);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statValue {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-payday);
+  letter-spacing: -0.5px;
+}

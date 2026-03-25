@@ -1,0 +1,38 @@
+.scrollRow {
+  display: flex;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 2px 8px;
+}
+
+.scrollRow::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex-shrink: 0;
+  width: 168px;
+  scroll-snap-align: start;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-card);
+}
+
+.emoji {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}

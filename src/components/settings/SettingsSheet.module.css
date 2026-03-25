@@ -1,0 +1,218 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: var(--z-modal);
+  backdrop-filter: blur(2px);
+}
+
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: calc(var(--z-modal) + 1);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--spacing-sm) var(--spacing-lg) calc(var(--spacing-xl) + var(--safe-area-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.12);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  margin: var(--spacing-xs) auto var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Rate input */
+.rateRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: var(--color-surface-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.rateCurrency {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text-secondary);
+}
+
+.rateInput {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.rateInput::-webkit-outer-spin-button,
+.rateInput::-webkit-inner-spin-button { -webkit-appearance: none; }
+.rateInput[type=number] { -moz-appearance: textfield; }
+
+/* Time inputs */
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timeInput {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  outline: none;
+  flex: 1;
+  text-align: center;
+  -webkit-appearance: none;
+}
+
+.timeInput:focus { border-color: var(--color-accent); }
+
+.timeSep {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+/* Day pills */
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.dayPill {
+  padding: 7px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-muted);
+  color: var(--color-text-secondary);
+  border: 1.5px solid transparent;
+  transition: all var(--duration-fast);
+}
+
+.dayActive {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Payday options */
+.paydayOptions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.optionBtn {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-muted);
+  color: var(--color-text-secondary);
+  border: 1.5px solid transparent;
+  transition: all var(--duration-fast);
+}
+
+.optionActive {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.dayOfMonth {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.dayOfMonthLabel {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.dayInput {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  outline: none;
+  width: 72px;
+  text-align: center;
+}
+
+.dayInput:focus { border-color: var(--color-accent); }
+.dayInput::-webkit-outer-spin-button,
+.dayInput::-webkit-inner-spin-button { -webkit-appearance: none; }
+.dayInput[type=number] { -moz-appearance: textfield; }
+
+/* Save button */
+.saveBtn {
+  width: 100%;
+  padding: 17px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: white;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  transition: background var(--duration-fast);
+  flex-shrink: 0;
+}
+
+.saveBtn:active { background: var(--color-accent-hover); }

@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-3xl) var(--spacing-md) var(--spacing-xl);
+  gap: var(--spacing-sm);
+}
+
+.label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.countdown {
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-tertiary);
+  letter-spacing: -3px;
+  line-height: 1;
+  font-family: var(--font-family);
+}
+
+.nextShift {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.todayNote {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-xs);
+}

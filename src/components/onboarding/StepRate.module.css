@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-xl) 0 0;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-top: -4px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.currency {
+  font-size: 40px;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+.input {
+  font-family: var(--font-family);
+  font-size: 48px;
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  line-height: 1;
+}
+
+.input::placeholder {
+  color: var(--color-border);
+}
+
+/* Hide number spinners */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input[type=number] { -moz-appearance: textfield; }
+
+.btn {
+  width: 100%;
+  padding: 17px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  transition: background var(--duration-fast), opacity var(--duration-fast);
+}
+
+.btnActive {
+  background: var(--color-accent);
+  color: white;
+}
+
+.btnDisabled {
+  background: var(--color-muted);
+  color: var(--color-text-tertiary);
+}
