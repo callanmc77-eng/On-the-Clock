@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="36%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#3D2580"/>
+      <stop offset="100%" stop-color="#0E0620"/>
+    </radialGradient>
+
+    <!-- Champagne gold -->
+    <linearGradient id="arcGold" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F2DC80"/>
+      <stop offset="40%" stop-color="#CFA94E"/>
+      <stop offset="100%" stop-color="#906A18"/>
+    </linearGradient>
+
+    <!-- Track: barely visible purple ring -->
+    <linearGradient id="trackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8060CC" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#4020A8" stop-opacity="0.07"/>
+    </linearGradient>
+
+    <!-- Arc glow -->
+    <filter id="arcGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Dot glow (warmer, bigger) -->
+    <filter id="dotGlow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="108" ry="108" fill="url(#bg)"/>
+
+  <!-- Subtle inner atmospheric highlight -->
+  <ellipse cx="200" cy="155" rx="200" ry="175" fill="#5030B8" fill-opacity="0.12"/>
+
+  <!--
+    Arc: radius=148, centre=256,256
+    Diameter=296, safe zone comfortably within rounded corners.
+
+    Gap: bottom-left ~45°
+    Start: top dead centre (-90° in SVG = 256, 108)
+    End:   225° in SVG coords = 256+148*cos(225°), 256+148*sin(225°)
+         = 256 - 104.6, 256 + 104.6 = 151.4, 360.6
+
+    Sweep: 315° clockwise from top
+    large-arc-flag=1, sweep-flag=1
+  -->
+
+  <!-- Ghost track ring -->
+  <circle cx="256" cy="256" r="148" fill="none" stroke="url(#trackGrad)" stroke-width="11"/>
+
+  <!-- Gold arc -->
+  <path
+    d="M 256 108 A 148 148 0 1 1 151.4 360.6"
+    fill="none"
+    stroke="url(#arcGold)"
+    stroke-width="26"
+    stroke-linecap="round"
+    filter="url(#arcGlow)"
+  />
+
+  <!-- Glowing dot at arc tail -->
+  <circle cx="151.4" cy="360.6" r="16" fill="#F2DC80" filter="url(#dotGlow)"/>
+
+  <!-- Centre pivot dot -->
+  <circle cx="256" cy="256" r="10" fill="#CFA94E" fill-opacity="0.8"/>
+</svg>
