@@ -25,7 +25,7 @@ export function PaydayCard() {
       <div className={styles.divider} />
       <div className={styles.bottom}>
         <div className={styles.stat}>
-          <span className={styles.statLabel}>Projected by payday</span>
+          <span className={styles.statLabel}>Full pay this period</span>
           <span className={styles.statValue}>{formatEuroString(projectedTotal)}</span>
         </div>
         <div className={styles.stat}>

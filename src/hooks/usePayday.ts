@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { useClock } from './useClock';
 import { useSettingsStore } from '../store/settingsStore';
-import { nextPayday, daysUntilPayday, workingDaysUntilPayday, projectedRemainingByPayday } from '../utils/payday';
-import { earningsThisMonth } from '../utils/earnings';
+import { nextPayday, daysUntilPayday, workingDaysUntilPayday, fullPeriodEarnings } from '../utils/payday';
 
 export function usePayday() {
   const now = useClock();
@@ -12,13 +11,12 @@ export function usePayday() {
     const payday = nextPayday(now, settings.paydayConfig);
     const calendarDays = daysUntilPayday(now, payday);
     const workDays = workingDaysUntilPayday(now, payday, settings);
-    const alreadyEarned = earningsThisMonth(now, settings);
-    const remaining = projectedRemainingByPayday(now, payday, settings);
+    const periodTotal = fullPeriodEarnings(payday, settings);
     return {
       payday,
       calendarDays,
       workDays,
-      projectedTotal: alreadyEarned + remaining,
+      projectedTotal: periodTotal,
     };
   }, [now, settings]);
 }

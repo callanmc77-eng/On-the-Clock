@@ -23,12 +23,29 @@ export function StatCards({ secondsWorked, todayEarnings }: StatCardsProps) {
   const mountRef = useRef({ earnings: todayEarnings });
   const sinceMountEarnings = todayEarnings - mountRef.current.earnings;
 
-  // Coffee time
-  const COFFEE_PRICE = 3.50;
-  const coffeeTime = timeEarnedThreshold(settings, COFFEE_PRICE);
-  const coffeeText = coffeeTime
-    ? `You covered a coffee ☕ at ${formatTime(coffeeTime)}`
-    : `You'll cover a coffee ☕ soon`;
+  // Daily rotating "treat" card
+  const TREATS = [
+    { emoji: '☕', name: 'a coffee', price: 3.50 },
+    { emoji: '🥐', name: 'a croissant', price: 2.80 },
+    { emoji: '🍺', name: 'a pint', price: 6.50 },
+    { emoji: '🍕', name: 'a slice of pizza', price: 4.00 },
+    { emoji: '🧁', name: 'a cupcake', price: 3.20 },
+    { emoji: '🌮', name: 'a taco', price: 5.00 },
+    { emoji: '🍫', name: 'a chocolate bar', price: 2.00 },
+    { emoji: '🧃', name: 'a smoothie', price: 5.50 },
+    { emoji: '🍩', name: 'a doughnut', price: 2.50 },
+    { emoji: '🥙', name: 'a wrap', price: 6.00 },
+    { emoji: '🍣', name: 'a sushi roll', price: 7.00 },
+    { emoji: '🧋', name: 'a bubble tea', price: 6.00 },
+    { emoji: '🍦', name: 'an ice cream', price: 3.00 },
+    { emoji: '🥨', name: 'a pretzel', price: 2.20 },
+  ];
+  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000);
+  const treat = TREATS[dayOfYear % TREATS.length];
+  const treatTime = timeEarnedThreshold(settings, treat.price);
+  const coffeeText = treatTime
+    ? `You covered ${treat.name} ${treat.emoji} at ${formatTime(treatTime)}`
+    : `You'll cover ${treat.name} ${treat.emoji} soon`;
 
   // Time at work
   const durationText = secondsWorked > 0
@@ -51,7 +68,7 @@ export function StatCards({ secondsWorked, todayEarnings }: StatCardsProps) {
   const annualText = `At this rate, you'll earn ${formatEuroString(annualEstimate)} this year`;
 
   const cards = [
-    { emoji: '☕', text: coffeeText },
+    { emoji: treat.emoji, text: coffeeText },
     { emoji: '⏱', text: durationText },
     { emoji: '👀', text: sinceReadingText },
     { emoji: '📅', text: daysText },

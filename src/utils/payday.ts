@@ -45,9 +45,26 @@ export function workingDaysUntilPayday(now: Date, payday: Date, settings: WorkSe
   return count;
 }
 
-/** Expected earnings from remaining work days until payday */
-export function projectedRemainingByPayday(now: Date, payday: Date, settings: WorkSettings): number {
+/** Total working days in the full pay period (from start of pay period to payday, inclusive) */
+export function workingDaysInPeriod(payday: Date, settings: WorkSettings): number {
+  // Pay period starts the day after the previous payday
+  const prevYear = payday.getMonth() === 0 ? payday.getFullYear() - 1 : payday.getFullYear();
+  const prevMonth = payday.getMonth() === 0 ? 11 : payday.getMonth() - 1;
+  const prevPayday = nextPayday(new Date(prevYear, prevMonth, payday.getDate()), settings.paydayConfig);
+  // Period start = day after previous payday
+  const start = new Date(prevPayday.getFullYear(), prevPayday.getMonth(), prevPayday.getDate() + 1);
+  let count = 0;
+  const cursor = new Date(start);
+  while (cursor <= payday) {
+    if (settings.workDays.includes(cursor.getDay() as 0)) count++;
+    cursor.setDate(cursor.getDate() + 1);
+  }
+  return count;
+}
+
+/** Full earnings for the entire pay period */
+export function fullPeriodEarnings(payday: Date, settings: WorkSettings): number {
   const hpd = (settings.workEndHour * 60 + settings.workEndMinute -
     settings.workStartHour * 60 - settings.workStartMinute) / 60;
-  return workingDaysUntilPayday(now, payday, settings) * settings.hourlyRate * hpd;
+  return workingDaysInPeriod(payday, settings) * settings.hourlyRate * hpd;
 }
